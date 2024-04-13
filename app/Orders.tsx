@@ -12,10 +12,11 @@ const Orders = () => {
   const { orders, setOrders }: any = useContext(OrdersContext)
 
   const handleOrder = async () => {
+    if (!number) return setError("Please enter a valid number")
     let numberCopy = +number.replace(/\D/g, '')
 
     // Validations
-    if (!number) return setError("Please enter a valid number")
+    
     if (numberCopy.toString().length !== 11) return setError("Please enter a valid number")
     if (!orders.length) return setError("Please add some products to order")
     setError("")
